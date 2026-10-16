@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>MrDon Link Tool — Link Resolver</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="MrDon Link Tool trang chủ">
+        <span class="brand-mark">↗</span>
+        <span>MrDon <b>Link Tool</b><small>REDIRECT INSPECTOR</small></span>
+      </a>
+      <span class="status-pill"><i></i> HTTP / HTTPS</span>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow"><span>●</span> LINK ANALYZER</div>
+      <h1>Đi thẳng đến <span>đích cuối.</span></h1>
+      <p class="subhead">Kiểm tra chuỗi chuyển hướng của link rút gọn trong một giao diện gọn nhẹ.</p>
+
+      <form id="resolve-form" class="search-card">
+        <label for="url-input">Dán liên kết của bạn</label>
+        <div class="input-row">
+          <span class="link-icon">↗</span>
+          <input id="url-input" name="url" type="url" placeholder="https://short.link/abc123" maxlength="4096" autocomplete="url" required>
+          <button id="paste-btn" class="paste-btn" type="button" title="Dán từ clipboard">Dán</button>
+        </div>
+        <div class="form-bottom">
+          <span class="hint">Hỗ trợ chuyển hướng HTTP/HTTPS công khai</span>
+          <button id="submit-btn" class="primary-btn" type="submit"><span>Kiểm tra link</span><b>→</b></button>
+        </div>
+        <div id="progress" class="progress hidden"><span></span></div>
+      </form>
+      <div id="notice" class="notice hidden" role="status"></div>
+    </section>
+
+    <section id="result-section" class="panel hidden">
+      <div class="section-head">
+        <div><div class="eyebrow">KẾT QUẢ PHÂN TÍCH</div><h2>Chuỗi chuyển hướng</h2></div>
+        <span id="step-count" class="count-badge">0 bước</span>
+      </div>
+      <div class="final-card">
+        <div class="final-label"><span class="target-icon">◎</span><span>URL cuối cùng</span></div>
+        <div class="final-url-row"><a id="final-url" href="#" target="_blank" rel="noopener noreferrer"></a><button id="copy-final" class="copy-btn" type="button">Sao chép <span>▣</span></button></div>
+      </div>
+      <div id="chain" class="chain"></div>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="section-head">
+        <div><div class="eyebrow">TRÊN THIẾT BỊ NÀY</div><h2>Lịch sử gần đây</h2></div>
+        <button id="clear-history" class="text-btn" type="button">Xóa lịch sử</button>
+      </div>
+      <div id="history-list" class="history-list"></div>
+      <div id="empty-history" class="empty-state"><span>◷</span><p>Chưa có liên kết nào được kiểm tra.</p><small>Lịch sử được lưu trong trình duyệt của bạn.</small></div>
+    </section>
+
+    <footer>
+      <span>MrDon Link Tool <b>·</b> Phiên bản web</span>
+      <span>Không vượt đăng nhập, CAPTCHA hoặc cơ chế bảo vệ truy cập.</span>
+    </footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
